@@ -57,7 +57,7 @@ class Carousel extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 7000,
       fade: true,
     }
