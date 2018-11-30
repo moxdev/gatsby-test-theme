@@ -1,7 +1,9 @@
 import React from 'react'
 import Layout from '../layouts/index'
-import Image from '../components/Image'
+// import Image from '../components/Image'
 import Gallery from '../components/Gallery'
+// import GatsbyGallery from '../components/GatsbyGallery'
+import logo from '../images/gatsby-icon.png'
 
 function makeUnsplashSrc(id) {
   return `https://images.unsplash.com/photo-${id}?dpr=2&auto=format&w=1024&h=1024`
@@ -64,23 +66,8 @@ const PhotoGalleryPage = () => (
     >
       <h1>Photo Gallery Page</h1>
     </div>
-    <Gallery
-      images={DEFAULT_IMAGES.map(
-        ({ caption, id, orientation, useForDemo }) => ({
-          src: makeUnsplashSrc(id),
-          thumbnail: makeUnsplashThumbnail(id, orientation),
-          srcSet: [
-            makeUnsplashSrcSet(id, 1024),
-            makeUnsplashSrcSet(id, 800),
-            makeUnsplashSrcSet(id, 500),
-            makeUnsplashSrcSet(id, 320),
-          ],
-          caption,
-          orientation,
-          useForDemo,
-        })
-      )}
-    />
+    <Gallery images={[{ src: `${logo}` }, { src: `${logo}` }]} />
+    <img src={logo} alt="" />
   </Layout>
 )
 
