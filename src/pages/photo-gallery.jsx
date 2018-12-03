@@ -4,9 +4,6 @@ import Layout from '../layouts/index'
 // import Image from '../components/Image'
 // import Gallery from '../components/Gallery'
 import GatsbyGallery from '../components/GatsbyGallery'
-import gallery1 from '../images/gallery/gallery-1.jpg'
-import gallery2 from '../images/gallery/gallery-2.jpg'
-import gallery3 from '../images/gallery/gallery-3.jpg'
 
 const PhotoGalleryPage = ({ data }) => (
   <Layout>
@@ -39,7 +36,7 @@ export const pageQuery = graphql`
     allFile(
       filter: {
         extension: { regex: "/(jpeg|jpg|gif|png)/" }
-        sourceInstanceName: { eq: "images" }
+        sourceInstanceName: { eq: "images/gallery" }
       }
     ) {
       edges {
