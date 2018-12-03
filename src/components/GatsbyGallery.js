@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Lightbox from 'react-images'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
 
 class GatsbyGallery extends Component {
   constructor(props) {
@@ -10,8 +11,9 @@ class GatsbyGallery extends Component {
       shareOpen: false,
       anchorEl: null,
       lightbox: false,
+      currentImage: 0,
       photos: props.photos.map(photo =>
-        Object.assign({ srcSet: photo.childImageSharp.fluid.srcSet })
+        Object.assign({ srcSet: photo.fluid.srcSet })
       ),
     }
   }
@@ -32,7 +34,7 @@ class GatsbyGallery extends Component {
   }
 
   closeLightbox() {
-    this.setState({ lightbox: false })
+    this.setState({ lightbox: false, currentImage: 0 })
   }
 
   render() {
@@ -42,20 +44,21 @@ class GatsbyGallery extends Component {
         <div>
           {photos.map((photo, i) => (
             <a
-              href={photo.childImageSharp.fluid.src}
+              key={i}
+              href={photo.fluid.srcSet}
               onClick={e => this.openLightbox(i, e)}
             >
-              <Img
-                key={i}
-                className={classes.spacer}
-                fluid={photo.childImageSharp.fluid}
-              />
+              <Img fluid={photo.fluid} />
             </a>
           ))}
         </div>
         <Lightbox
           backdropClosesModal
+          enableKeyboardInput
+          showImageCount
+          imageCountSeparator=" of "
           images={this.state.photos}
+          preloadNextImage
           currentImage={this.state.photo}
           isOpen={this.state.lightbox}
           onClickPrev={() => this.gotoPrevLightboxImage()}

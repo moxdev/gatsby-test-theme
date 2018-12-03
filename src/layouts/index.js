@@ -63,7 +63,6 @@ const Layout = ({ children }) => (
             carouselImageTwo={data.carouselImageTwo.childImageSharp.fluid}
             carouselImageThree={data.carouselImageThree.childImageSharp.fluid}
           />
-
           <>{children}</>
         </>
       </ThemeProvider>
