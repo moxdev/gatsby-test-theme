@@ -18,22 +18,15 @@ const PhotoGalleryPage = ({ data }) => (
     >
       <h1>Photo Gallery Page</h1>
     </div>
-    {/* <GatsbyGallery photos={galleryImages} /> */}
+    <GatsbyGallery photos={data.galleryArray.edges} />
   </Layout>
 )
 
 export default PhotoGalleryPage
 
-export const pageQuery = graphql`
+export const galleryImageQuery = graphql`
   query {
-    testImage: file(relativePath: { eq: "carousel-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1800) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    allFile(
+    galleryArray: allFile(
       filter: {
         extension: { regex: "/(jpeg|jpg|gif|png)/" }
         relativeDirectory: { regex: "/gallery/" }
@@ -41,9 +34,10 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          name
           childImageSharp {
-            sizes(maxWidth: 2000) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 900) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

@@ -8,12 +8,10 @@ class GatsbyGallery extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      shareOpen: false,
-      anchorEl: null,
       lightbox: false,
-      currentImage: 0,
+      photo: null,
       photos: props.photos.map(photo =>
-        Object.assign({ srcSet: photo.fluid.srcSet })
+        Object.assign({ srcSet: photo.node.childImageSharp.fluid.srcSet })
       ),
     }
   }
@@ -34,21 +32,25 @@ class GatsbyGallery extends Component {
   }
 
   closeLightbox() {
-    this.setState({ lightbox: false, currentImage: 0 })
+    this.setState({ lightbox: false })
   }
 
   render() {
     const { photos } = this.props
+
     return (
       <div>
         <div>
           {photos.map((photo, i) => (
             <a
-              key={i}
-              href={photo.fluid.srcSet}
+              key={`gallery-image-${i + 1}`}
+              href={photo.node.childImageSharp.fluid.srcSet}
               onClick={e => this.openLightbox(i, e)}
             >
-              <Img fluid={photo.fluid} />
+              <Img
+                fluid={photo.node.childImageSharp.fluid}
+                alt={photo.node.name}
+              />
             </a>
           ))}
         </div>
