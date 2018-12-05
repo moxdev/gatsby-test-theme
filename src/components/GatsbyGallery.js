@@ -11,7 +11,13 @@ class GatsbyGallery extends Component {
       lightbox: false,
       photo: null,
       photos: props.photos.map(photo =>
-        Object.assign({ srcSet: photo.node.childImageSharp.fluid.srcSet })
+        Object.assign({
+          aspectRatio: photo.node.childImageSharp.fluid.aspectRatio,
+          base64: photo.node.childImageSharp.fluid.base64,
+          sizes: photo.node.childImageSharp.fluid.sizes,
+          srcSet: photo.node.childImageSharp.fluid.srcSet,
+          src: photo.node.childImageSharp.fluid.src,
+        })
       ),
     }
   }
