@@ -27,6 +27,7 @@ export default PhotoGalleryPage
 export const galleryImageQuery = graphql`
   query {
     galleryArray: allFile(
+      sort: { fields: [name] }
       filter: {
         extension: { regex: "/(jpeg|jpg|gif|png)/" }
         relativeDirectory: { regex: "/gallery/" }
