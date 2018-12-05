@@ -11,7 +11,7 @@ const Navbar = () => (
   <Nav>
     <Link to="/">Floor Plans &amp; Rates</Link>
     <Link to="/">Community</Link>
-    <Link to="/">Photo Gallery</Link>
+    <Link to="/photo-gallery">Photo Gallery</Link>
     <Link to="/">Contact Us</Link>
   </Nav>
 )

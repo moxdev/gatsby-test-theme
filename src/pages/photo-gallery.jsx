@@ -36,7 +36,7 @@ export const pageQuery = graphql`
     allFile(
       filter: {
         extension: { regex: "/(jpeg|jpg|gif|png)/" }
-        sourceInstanceName: { eq: "images/gallery" }
+        relativeDirectory: { regex: "/gallery/" }
       }
     ) {
       edges {

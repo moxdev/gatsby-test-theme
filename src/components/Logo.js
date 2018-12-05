@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../utils/style.utils'
 
-import logo from '../assets/gatsby-icon.png'
+import logo from '../images/gatsby-icon.png'
 
 const LogoWrapper = styled.nav`
   img {
