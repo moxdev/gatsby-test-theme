@@ -5,6 +5,10 @@ import Layout from '../layouts/index'
 // import Gallery from '../components/Gallery'
 import GatsbyGallery from '../components/GatsbyGallery'
 
+const galleryArray = {
+
+}
+
 const PhotoGalleryPage = ({ data }) => (
   <Layout>
     <div
@@ -26,21 +30,17 @@ export default PhotoGalleryPage
 
 export const galleryImageQuery = graphql`
   query {
-    galleryArray: allFile(
-      sort: { fields: [name] }
-      filter: {
-        extension: { regex: "/(jpeg|jpg|gif|png)/" }
-        relativeDirectory: { regex: "/gallery/" }
+    galleryImageOne: file(relativePath: { eq: "carousel-1.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid
+        }
       }
-    ) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid(maxWidth: 900) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+    }
+    galleryImageTwo: file(relativePath: { eq: "carousel-2.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
