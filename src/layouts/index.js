@@ -70,8 +70,8 @@ const Layout = ({ children }) => (
   />
 )
 
-Layout.propTypes = {
-  children: PropTypes.array.isRequired,
-}
+// Layout.propTypes = {
+//   children: PropTypes.object.isRequired,
+// }
 
 export default Layout

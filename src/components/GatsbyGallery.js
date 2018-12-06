@@ -8,15 +8,14 @@ class GatsbyGallery extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentImage: 0,
       lightbox: false,
       photo: null,
       photos: props.photos.map(photo =>
         Object.assign({
-          aspectRatio: photo.node.childImageSharp.fluid.aspectRatio,
-          base64: photo.node.childImageSharp.fluid.base64,
-          sizes: photo.node.childImageSharp.fluid.sizes,
-          srcSet: photo.node.childImageSharp.fluid.srcSet,
-          src: photo.node.childImageSharp.fluid.src,
+          src: photo.fluid.src,
+          srcSet: photo.fluid.srcSet,
+          caption: photo.caption,
         })
       ),
     }
@@ -38,7 +37,7 @@ class GatsbyGallery extends Component {
   }
 
   closeLightbox() {
-    this.setState({ lightbox: false })
+    this.setState({ lightbox: false, currentImage: 0 })
   }
 
   render() {
@@ -50,13 +49,11 @@ class GatsbyGallery extends Component {
           {photos.map((photo, i) => (
             <a
               key={`gallery-image-${i + 1}`}
-              href={photo.node.childImageSharp.fluid.srcSet}
+              href={photo.srcSet}
               onClick={e => this.openLightbox(i, e)}
+              alt={photo.alt}
             >
-              <Img
-                fluid={photo.node.childImageSharp.fluid}
-                alt={photo.node.name}
-              />
+              <Img fluid={photo.fluid} alt={photo.alt} />
             </a>
           ))}
         </div>
