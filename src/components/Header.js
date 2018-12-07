@@ -11,6 +11,8 @@ const HeaderWrapper = styled.header`
   padding-bottom: 1rem;
   padding-left: 1.875rem;
   padding-right: 1.875rem;
+  background-color: #fff;
+  border-bottom: 5px solid #00467e;
 `
 const HeaderContainer = styled.div`
   display: flex;

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../layouts/index'
-import GatsbyGallery from '../components/GatsbyGallery'
+import GatsbyGallery from '../components/PhotoGalleryLightbox'
 
-export default class PhotoGalleryPage extends Component {
+class PhotoGalleryPage extends Component {
   render() {
     const { data } = this.props
 
@@ -98,15 +98,7 @@ export default class PhotoGalleryPage extends Component {
 
     return (
       <Layout>
-        <div
-          style={{
-            maxWidth: '900px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            marginTop: '10%',
-            textAlign: 'center',
-          }}
-        >
+        <div>
           <h1>Ready to see more photos of your new home?</h1>
           <p>
             Check out the photos below of our beautiful community. At Queens
@@ -125,6 +117,8 @@ export default class PhotoGalleryPage extends Component {
     )
   }
 }
+
+export default PhotoGalleryPage
 
 export const galleryImageQuery = graphql`
   query {

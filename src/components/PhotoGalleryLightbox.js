@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 
-class GatsbyGallery extends Component {
+class PhotoGalleryLightbox extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -74,8 +74,9 @@ class GatsbyGallery extends Component {
   }
 }
 
-export default GatsbyGallery
+export default PhotoGalleryLightbox
 
-GatsbyGallery.propTypes = {
+PhotoGalleryLightbox.displayName = 'PhotoGalleryLightbox'
+PhotoGalleryLightbox.propTypes = {
   photos: PropTypes.array.isRequired,
 }
