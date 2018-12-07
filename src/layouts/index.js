@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 
 import Header from '../components/Header'
-import Carousel from '../components/Carousel'
+import Footer from '../components/Footer'
 
 import '../styles/styles.scss'
 
@@ -18,27 +18,6 @@ const Layout = ({ children }) => (
           siteMetadata {
             title
             description
-          }
-        }
-        carouselImageOne: file(relativePath: { eq: "carousel-1.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        carouselImageTwo: file(relativePath: { eq: "carousel-2.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        carouselImageThree: file(relativePath: { eq: "carousel-3.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 1800) {
-              ...GatsbyImageSharpFluid
-            }
           }
         }
       }
@@ -58,12 +37,8 @@ const Layout = ({ children }) => (
             <html lang="en" />
           </Helmet>
           <Header />
-          <Carousel
-            carouselImageOne={data.carouselImageOne.childImageSharp.fluid}
-            carouselImageTwo={data.carouselImageTwo.childImageSharp.fluid}
-            carouselImageThree={data.carouselImageThree.childImageSharp.fluid}
-          />
           <>{children}</>
+          <Footer  />
         </>
       </ThemeProvider>
     )}

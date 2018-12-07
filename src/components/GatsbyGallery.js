@@ -8,7 +8,6 @@ class GatsbyGallery extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentImage: 0,
       lightbox: false,
       photo: null,
       photos: props.photos.map(photo =>
@@ -37,7 +36,7 @@ class GatsbyGallery extends Component {
   }
 
   closeLightbox() {
-    this.setState({ lightbox: false, currentImage: 0 })
+    this.setState({ lightbox: false })
   }
 
   render() {
@@ -76,3 +75,7 @@ class GatsbyGallery extends Component {
 }
 
 export default GatsbyGallery
+
+GatsbyGallery.propTypes = {
+  photos: PropTypes.array.isRequired,
+}

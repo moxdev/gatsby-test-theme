@@ -9,10 +9,10 @@ const Nav = styled.nav``
 
 const Navbar = () => (
   <Nav>
-    <Link to="/">Floor Plans &amp; Rates</Link>
-    <Link to="/">Community</Link>
+    <Link to="/floor-plans">Floor Plans &amp; Rates</Link>
+    <Link to="/community">Community</Link>
     <Link to="/photo-gallery">Photo Gallery</Link>
-    <Link to="/">Contact Us</Link>
+    <Link to="/contact-us">Contact Us</Link>
   </Nav>
 )
 
