@@ -15,10 +15,12 @@
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-sharp": "^2.1.4",
     "google-map-react": "^1.1.1",
+    "google-maps-react": "^2.0.2",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.19",
     "react-slick": "^0.23.2",
@@ -38,6 +40,7 @@
     "clean": "rm -rf public && rm -rf .cache"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.8.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
