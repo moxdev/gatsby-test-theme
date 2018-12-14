@@ -6,7 +6,7 @@ import GatsbyGallery from '../components/PhotoGalleryLightbox'
 
 class PhotoGalleryPage extends Component {
   render() {
-    const { data } = this.props
+    const { data, location } = this.props
 
     const GALLERY_IMAGES = [
       {
@@ -97,7 +97,7 @@ class PhotoGalleryPage extends Component {
     ]
 
     return (
-      <Layout>
+      <Layout location={location}>
         <div>
           <h1>Ready to see more photos of your new home?</h1>
           <p>

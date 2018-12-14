@@ -29,7 +29,7 @@ const ContentWrapper = styled.div`
   padding-right: 1.87rem;
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {

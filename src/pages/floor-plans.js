@@ -6,7 +6,7 @@ import FloorPlanLightbox from '../components/FloorPlanLightbox'
 
 class FloorPlansPage extends Component {
   render() {
-    const { data } = this.props
+    const { data, location } = this.props
 
     const GALLERY_IMAGES = [
       {
@@ -39,7 +39,7 @@ class FloorPlansPage extends Component {
     ]
 
     return (
-      <Layout>
+      <Layout location={location}>
         <div>
           <h1>Hyattsville, MD Apartment Floor Plans</h1>
           <p>

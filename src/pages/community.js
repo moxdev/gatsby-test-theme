@@ -8,8 +8,9 @@ import MyMap from '../components/MyMap'
 
 class CommunityMap extends Component {
   render() {
+    const { location } = this.props
     return (
-      <Layout>
+      <Layout location={location}>
         <div>
           <h1>
             At Queens Manor Gardens Apartments, we offer more than a great
