@@ -26,8 +26,9 @@ const FormWrapper = styled.div`
     margin: 10px 0;
   }
 `
-const API_PATH = 'http://localhost:8003/api/index.php'
-// const API_PATH = 'http://localhost:8003/api/gatsby-icon.png'
+// const API_PATH = 'https://www.shanebiggs.com/gatsby/api/index.php'
+const API_PATH = 'http://localhost:8080/api/index.php'
+console.log(API_PATH)
 
 class ContactForm extends Component {
   constructor(props) {
@@ -55,12 +56,13 @@ class ContactForm extends Component {
         this.setState({
           mailSent: result.data.sent,
         })
-        console.log(this.state)
+        console.log(API_PATH)
       })
       .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
+    console.log(API_PATH)
     return (
       <div>
         <p>Contact Me</p>
