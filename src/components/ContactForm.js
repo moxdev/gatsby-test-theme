@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { media } from '../utils/style.utils'
 
+// Look into Formik
+// https://jaredpalmer.com/formik/docs/overview
+
 const FormWrapper = styled.div`
   max-width: 600px;
   margin-left: auto;
