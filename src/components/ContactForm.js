@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withPrefix } from 'gatsby'
 import axios from 'axios'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -26,9 +25,7 @@ const FormWrapper = styled.div`
     margin: 10px 0;
   }
 `
-// const API_PATH = 'https://www.shanebiggs.com/gatsby/api/index.php'
-const API_PATH = 'http://localhost:8080/api/index.php'
-console.log(API_PATH)
+const API_PATH = 'https://www.shanebiggs.com/api/contact/index.php'
 
 class ContactForm extends Component {
   constructor(props) {
@@ -45,7 +42,6 @@ class ContactForm extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
     axios({
       method: 'post',
       url: `${API_PATH}`,
@@ -53,16 +49,19 @@ class ContactForm extends Component {
       data: this.state,
     })
       .then(result => {
-        this.setState({
-          mailSent: result.data.sent,
-        })
-        console.log(API_PATH)
+        if (result.data.sent) {
+          this.setState({
+            mailSent: result.data.sent,
+          })
+          this.setState({ error: false })
+        } else {
+          this.setState({ error: true })
+        }
       })
       .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
-    console.log(API_PATH)
     return (
       <div>
         <p>Contact Me</p>
