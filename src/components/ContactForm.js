@@ -27,17 +27,35 @@ const FormWrapper = styled.div`
 `
 const API_PATH = 'https://www.shanebiggs.com/api/contact/index.php'
 
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+)
+
 class ContactForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fname: '',
-      lname: '',
-      email: '',
-      message: '',
+      fname: null,
+      lname: null,
+      email: null,
+      message: null,
       mailSent: false,
-      error: null,
+      formErrors: {
+        fname: '',
+        lname: '',
+        email: '',
+      },
+      emailValid: false,
+      formValid: false,
     }
+  }
+
+  handleUserInput = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({ [name]: value }, () => {
+      this.validateField(name, value)
+    })
   }
 
   handleFormSubmit = e => {
@@ -61,7 +79,39 @@ class ContactForm extends Component {
       .catch(error => this.setState({ error: error.message }))
   }
 
+  validateField(fieldName, value) {
+    const fieldValidationErrors = this.state.formErrors
+    let emailValid = this.state.emailValid
+
+    switch (fieldName) {
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid'
+        break
+      default:
+        break
+    }
+    this.setState(
+      {
+        formErrors: fieldValidationErrors,
+        emailValid,
+      },
+      this.validateForm
+    )
+  }
+
+  validateForm() {
+    this.setState({
+      formValid: this.state.emailValid,
+    })
+  }
+
+  errorClass(error) {
+    return error.length === 0 ? '' : 'has-error'
+  }
+
   render() {
+    const { errors } = this.state
     return (
       <div>
         <p>Contact Me</p>
@@ -71,21 +121,29 @@ class ContactForm extends Component {
             <input
               type="text"
               id="fname"
-              name="firstname"
+              name="fname"
               placeholder="Your name.."
               value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
+              onChange={this.handleUserInput}
+              noValidate
             />
+            {errors.email.length > 0 && (
+              <span className="error">{errors.fname}</span>
+            )}
 
             <label>Last Name</label>
             <input
               type="text"
               id="lname"
-              name="lastname"
+              name="lname"
               placeholder="Your last name.."
               value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
+              onChange={this.handleUserInput}
+              noValidate
             />
+            {errors.email.length > 0 && (
+              <span className="error">{errors.lname}</span>
+            )}
 
             <label>Email</label>
             <input
@@ -94,8 +152,12 @@ class ContactForm extends Component {
               name="email"
               placeholder="Your email"
               value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
+              onChange={this.handleUserInput}
+              noValidate
             />
+            {errors.email.length > 0 && (
+              <span className="error">{errors.email}</span>
+            )}
 
             <label>Message</label>
             <textarea
